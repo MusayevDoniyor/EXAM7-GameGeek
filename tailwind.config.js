@@ -2,7 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "hammersmith-one": ["hammersmith-one", "sans-serif"],
+        inter: ["inter", "sans-serif"],
+        "readex-pro": ["readex-pro", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

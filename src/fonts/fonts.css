@@ -1,0 +1,14 @@
+@font-face {
+  font-family: hammersmith-one;
+  src: url("./Hammersmith_One/HammersmithOne-Regular.ttf");
+}
+
+@font-face {
+  font-family: inter;
+  src: url("./Inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+
+@font-face {
+  font-family: readex-pro;
+  src: url("./Readex_Pro/ReadexPro-VariableFont_HEXP\,wght.ttf");
+}
