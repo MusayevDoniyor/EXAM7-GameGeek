@@ -106,7 +106,12 @@ const UpperHeader = () => {
         </div>
 
         <div className="flex gap-4 items-center cursor-pointer">
-          <MdLanguage className="size-5" />
+          <MdLanguage
+            className="size-5"
+            onClick={() => {
+              style.rotate = "360deg";
+            }}
+          />
           <span>Location</span>
         </div>
       </div>
