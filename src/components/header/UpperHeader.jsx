@@ -26,22 +26,22 @@ const UpperHeader = () => {
 
         <Link
           to="tel:+4904-049-950"
-          className="text-white flex gap-4 items-center"
+          className="text-white flex gap-4 items-center font-medium"
         >
           <FiPhoneIncoming className="size-5" />
           <span>+4904-049-950</span>
         </Link>
       </div>
 
-      <div className="flex gap-5 text-white items-center">
+      <div className="flex gap-5 text-white items-center font-normal">
         <p>Get 50% Off on the Selected items</p>
 
         <span className="h-7 border-2 border-[#14FF00]"></span>
 
-        <a href="#">Shop now</a>
+        <a href="/">Shop now</a>
       </div>
 
-      <div className="text-white items-center flex gap-14">
+      <div className="text-white items-center flex gap-14 font-medium">
         <div className="items-center flex flex-col">
           <div
             className={`flex gap-4 items-center cursor-pointer relative ${

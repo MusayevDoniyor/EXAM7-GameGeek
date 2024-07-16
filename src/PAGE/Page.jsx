@@ -8,6 +8,7 @@ const Page = () => {
     <>
       <BrowserRouter>
         <Header />
+
         <Routes>
           <Route path="/" />
           <Route path="/:productId" />
