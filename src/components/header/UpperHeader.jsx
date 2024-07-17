@@ -18,33 +18,37 @@ const UpperHeader = () => {
   };
 
   return (
-    <div className="bg-[#0D2613] items-center px-16 py-7 flex justify-between font-inter">
-      <div className="flex gap-8 items-center">
+    <div className="bg-[#0D2613] items-center px-4 md:px-16 py-3 md:py-7 flex flex-col md:flex-row justify-between font-inter">
+      <div className="flex gap-4 md:gap-8 items-center mb-2 md:mb-0">
         <Link to="/">
           <img src={gg} alt="GG icon" />
         </Link>
 
         <Link
           to="tel:+4904-049-950"
-          className="text-white flex gap-4 items-center font-medium"
+          className="text-white flex gap-2 md:gap-4 items-center font-medium"
         >
           <FiPhoneIncoming className="size-5" />
           <span>+4904-049-950</span>
         </Link>
       </div>
 
-      <div className="flex gap-5 text-white items-center font-normal">
-        <p>Get 50% Off on the Selected items</p>
+      <div className="flex gap-2 md:gap-5 text-white items-center font-normal mb-2 md:mb-0">
+        <p className="text-sm md:text-base">
+          Get 50% Off on the Selected items
+        </p>
 
         <span className="h-7 border-2 border-[#14FF00]"></span>
 
-        <a href="/">Shop now</a>
+        <a href="/" className="text-sm md:text-base">
+          Shop now
+        </a>
       </div>
 
-      <div className="text-white items-center flex gap-14 font-medium">
+      <div className="text-white items-center flex gap-4 md:gap-14 font-medium">
         <div className="items-center flex flex-col">
           <div
-            className={`flex gap-4 items-center cursor-pointer relative ${
+            className={`flex gap-2 md:gap-4 items-center cursor-pointer relative ${
               languageOpen ? "z-10" : ""
             }`}
             onClick={() => setLanguageOpen(!languageOpen)}
@@ -105,14 +109,9 @@ const UpperHeader = () => {
           </div>
         </div>
 
-        <div className="flex gap-4 items-center cursor-pointer">
-          <MdLanguage
-            className="size-5"
-            onClick={() => {
-              style.rotate = "360deg";
-            }}
-          />
-          <span>Location</span>
+        <div className="flex gap-2 md:gap-4 items-center cursor-pointer">
+          <MdLanguage className="size-5" />
+          <span className="text-sm md:text-base">Location</span>
         </div>
       </div>
     </div>
