@@ -5,7 +5,7 @@ import LowerHeader from "./LowerHeader";
 const Header = () => {
   return (
     <>
-      <header className="sticky top-1">
+      <header className="sticky ">
         <UpperHeader />
         <LowerHeader />
       </header>

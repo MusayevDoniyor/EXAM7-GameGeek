@@ -3,7 +3,7 @@ import { FaChevronDown } from "react-icons/fa6";
 
 const PriceSorting = ({ sortOrder, toggleSortOrder }) => {
   return (
-    <div className="flex justify-between px-16 py-7 bg-[#D5F8CF] my-10 text-[#0BA42D] items-center font-hammersmith-one font-normal text-xl">
+    <div className="flex justify-between px-16 py-7 bg-[#D5F8CF] mt-10 text-[#0BA42D] items-center font-hammersmith-one font-normal text-xl">
       <div>Filter By:</div>
 
       <div className="items-center">
