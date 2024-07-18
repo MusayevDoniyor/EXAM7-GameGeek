@@ -67,7 +67,7 @@ const CartsPage = ({ carts }) => {
 
       <div className="flex flex-col md:flex-row">
         <section className="mt-12 gap-7 border-r-2 pr-7 border-[#E9E7E7] flex-grow">
-          <div className="border-t-2 border-b-2 border-dotted border-[#6A6969] px-7 py-3 flex justify-between">
+          <div className="border-t-2 border-b-2 border-dashed border-[#6A6969] px-7 py-3 flex justify-between">
             <div className="font-hammersmith-one font-medium text-[#0D2612] text-2xl">
               Product
             </div>
@@ -87,7 +87,7 @@ const CartsPage = ({ carts }) => {
             {cartProducts.map((product) => (
               <div
                 key={product.id}
-                className="border-b-2 border-dotted border-[#6A6969] py-4 flex flex-col md:flex-row justify-between items-start"
+                className="border-b-2 border-dashed border-[#6A6969] py-4 flex flex-col md:flex-row justify-between items-start"
               >
                 <div className="flex gap-4 items-start">
                   <RxCross2
@@ -137,12 +137,12 @@ const CartsPage = ({ carts }) => {
         {cartProducts.length > 0 ? (
           <section className="mt-12 pl-7 md:ml-7">
             <div className="flex justify-between items-center">
-              <h4 className="text-[#0D2612] font-hammersmith-one text-3xl font-medium border-b-2 border-dotted border-[#6A6969] pb-4">
+              <h4 className="text-[#0D2612] font-hammersmith-one text-3xl font-medium border-b-2 border-dashed border-[#6A6969] pb-4">
                 Cart Totals
               </h4>
             </div>
 
-            <ul className="border-b-2 border-[#6A6969] border-dotted py-7 ">
+            <ul className="border-b-2 border-[#6A6969] border-dashed py-7 ">
               <li className="flex justify-between font-readex-pro font-normal text-lg text-[#190D26] ">
                 Items in Cart{" "}
                 <span className="font-semibold">{totalItems}</span>

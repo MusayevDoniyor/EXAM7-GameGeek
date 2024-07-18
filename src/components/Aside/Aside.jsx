@@ -19,7 +19,7 @@ const Aside = ({
     <aside className="bg-gray-50 p-6 rounded-lg">
       <div
         className="
-        border-t-2 border-b-2 border-[#454444CC] border-dotted py-4"
+        border-t-2 border-b-2 border-[#454444CC] border-dashed py-4"
       >
         <div
           className="flex justify-between items-center cursor-pointer  "
@@ -81,7 +81,7 @@ const Aside = ({
         )}
       </div>
 
-      <div className="border-b-2 border-[#454444CC] border-dotted py-4">
+      <div className="border-b-2 border-[#454444CC] border-dashed py-4">
         <div
           className="flex justify-between items-center cursor-pointer  "
           onClick={() => {

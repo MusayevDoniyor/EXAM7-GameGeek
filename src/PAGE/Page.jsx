@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../components/header/Header";
 import Products from "../pages/products/Products";
 import CartsPage from "../pages/cart/CartsPage";
+import SingleProduct from "../pages/singleProduct/SingleProduct";
 
 const Page = () => {
   const [carts, setCarts] = useState([]);
@@ -30,7 +31,7 @@ const Page = () => {
             path="/cart"
             element={<CartsPage carts={carts} setCarts={setCarts} />}
           />
-          <Route path="/:productId" />
+          <Route path="/:productId" element={<SingleProduct />} />
         </Routes>
       </BrowserRouter>
     </>

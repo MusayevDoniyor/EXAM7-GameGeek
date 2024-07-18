@@ -23,7 +23,7 @@ const Products = ({ carts, setCarts, setProducts }) => {
   const [colorsOpen, setColorsOpen] = useState(false);
 
   // ? Loading
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const baseUrl = `${import.meta.env.VITE_BASE_URL}`;
 
@@ -52,8 +52,6 @@ const Products = ({ carts, setCarts, setProducts }) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true);
-
       let query = `${baseUrl}/products`;
       const params = [];
 
