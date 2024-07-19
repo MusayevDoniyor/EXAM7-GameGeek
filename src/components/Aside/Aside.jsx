@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaCaretDown } from "react-icons/fa6";
 import checked from "../../assets/checked.svg";
+import { LanguageContext } from "../LanguageProvider";
 
 const Aside = ({
   toggleAccordion,
@@ -15,6 +16,8 @@ const Aside = ({
   setSelectedColor,
   selectedColor,
 }) => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <aside className="bg-gray-50 p-6 rounded-lg">
       <div
@@ -27,9 +30,23 @@ const Aside = ({
             toggleAccordion(brandsOpen, setBrandsOpen);
           }}
         >
-          <h3 className="font-hammersmith-one font-bold text-[#190D26] text-base">
-            BRAND
-          </h3>{" "}
+          {language === "en" && (
+            <h3 className="font-hammersmith-one font-bold text-[#190D26] text-base">
+              BRAND
+            </h3>
+          )}
+
+          {language === "es" && (
+            <h3 className="font-hammersmith-one font-bold text-[#190D26] text-base">
+              MARCA
+            </h3>
+          )}
+
+          {language === "uz" && (
+            <h3 className="font-hammersmith-one font-bold text-[#190D26] text-base">
+              BREND
+            </h3>
+          )}
           <FaCaretDown
             className={` transition-transform duration-300 ease-in-out text-[#0BA42D] size-5 ${
               brandsOpen ? "rotate-180" : "rotate-0"
@@ -75,7 +92,9 @@ const Aside = ({
                 setSelectedBrand("");
               }}
             >
-              Clear
+              {language === "en" && "Clear"}
+              {language === "es" && "Claro"}
+              {language === "uz" && "Tozalash"}
             </button>
           </>
         )}
@@ -88,9 +107,21 @@ const Aside = ({
             toggleAccordion(colorsOpen, setColorsOpen);
           }}
         >
-          <h3 className="font-hammersmith-one font-bold text-[#190D26] text-base">
-            COLORS
-          </h3>{" "}
+          {language === "en" && (
+            <h3 className="font-hammersmith-one font-bold text-[#190D26] text-base">
+              COLORS
+            </h3>
+          )}
+          {language === "es" && (
+            <h3 className="font-hammersmith-one font-bold text-[#190D26] text-base">
+              COLORES
+            </h3>
+          )}
+          {language === "uz" && (
+            <h3 className="font-hammersmith-one font-bold text-[#190D26] text-base">
+              RANGLAR
+            </h3>
+          )}
           <FaCaretDown
             className={` transition-transform duration-300 ease-in-out text-[#0BA42D] size-5 ${
               colorsOpen ? "rotate-180" : "rotate-0"
@@ -129,7 +160,9 @@ const Aside = ({
                 setSelectedColor("");
               }}
             >
-              Clear
+              {language === "en" && "Clear"}
+              {language === "es" && "Claro"}
+              {language === "uz" && "Tozalash"}
             </button>
           </>
         )}

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
+import { useContext } from "react";
+import { LanguageContext } from "../LanguageProvider";
 
-const Card = ({ product, products, setProducts, carts, setCarts }) => {
+const Card = ({ product, setCarts, setProducts, carts, products }) => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden transition-colors hover:bg-[#F4F4F4]">
       <div>
@@ -48,7 +52,9 @@ const Card = ({ product, products, setProducts, carts, setCarts }) => {
             className="bg-[#0BA42D] hover:bg-[#0BB91D] text-white font-medium px-6 py-2 md:px-8 md:py-3 rounded-md text-base md:text-lg flex gap-3 items-center"
           >
             <BsCart2 className="size-5 font-bold" />
-            Add to Cart
+            {language === "en" && "Add to Cart"}
+            {language === "es" && "Añadir al carrito"}
+            {language === "uz" && "Savatchaga qo'shish"}
           </button>
         </div>
       </div>
