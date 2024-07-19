@@ -31,6 +31,7 @@ const LowerHeader = ({ carts }) => {
           </ul>
         </nav>
       )}
+
       {language === "es" && (
         <nav className="mb-2 md:mb-0">
           <ul className="flex flex-wrap gap-4 md:gap-9 items-center font-medium text-sm md:text-base">
@@ -46,6 +47,7 @@ const LowerHeader = ({ carts }) => {
           </ul>
         </nav>
       )}
+
       {language === "uz" && (
         <nav className="mb-2 md:mb-0">
           <ul className="flex flex-wrap gap-4 md:gap-9 items-center font-medium text-sm md:text-base">
@@ -61,6 +63,21 @@ const LowerHeader = ({ carts }) => {
           </ul>
         </nav>
       )}
+
+      <div className="flex gap-4 md:gap-10 items-center">
+        <FiSearch className="size-5 cursor-pointer" />
+        <FiUser className="size-5 cursor-pointer" />
+        <div className="relative">
+          <NavLink to="/cart">
+            {carts.length > 0 && (
+              <span className="absolute bg-[#0D2613] text-white rounded-full text-center items-center py-[2px] px-[8px] text-xs md:text-sm bottom-4 left-3">
+                {carts.length}
+              </span>
+            )}
+            <BsCart2 className="size-5 cursor-pointer" />
+          </NavLink>
+        </div>
+      </div>
     </div>
   );
 };
