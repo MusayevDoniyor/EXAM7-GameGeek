@@ -1,11 +1,12 @@
+import { LanguageProvider } from "./components/LanguageProvider";
 import Page from "./PAGE/Page";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Page></Page>
-    </>
+    <LanguageProvider>
+      <Page />
+    </LanguageProvider>
   );
-}
+};
 
 export default App;

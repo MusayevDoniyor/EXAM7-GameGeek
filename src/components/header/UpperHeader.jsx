@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { FiPhoneIncoming } from "react-icons/fi";
 import { FaChevronDown } from "react-icons/fa6";
@@ -7,10 +7,17 @@ import gg from "../../assets/GG.svg";
 import usa from "/USA-icon.png";
 import spain from "/SPAIN-icon.png";
 import uzb from "/UZB-icon.png";
+import { LanguageContext } from "../LanguageProvider";
 
 const UpperHeader = () => {
   const [languageOpen, setLanguageOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
+
+  const { language, changeLanguage } = useContext(LanguageContext);
+
+  const handleLanguageChange = (newLanguage) => {
+    changeLanguage(newLanguage);
+  };
 
   const handleLanguageSelect = (language) => {
     setSelectedLanguage(language);
@@ -33,17 +40,47 @@ const UpperHeader = () => {
         </Link>
       </div>
 
-      <div className="flex gap-2 md:gap-5 text-white items-center font-normal mb-2 md:mb-0">
-        <p className="text-sm md:text-base">
-          Get 50% Off on the Selected items
-        </p>
+      {language === "en" && (
+        <div className="flex gap-2 md:gap-5 text-white items-center font-normal mb-2 md:mb-0">
+          <p className="text-sm md:text-base">
+            Get 50% Off on the Selected items
+          </p>
 
-        <span className="h-7 border-2 border-[#14FF00]"></span>
+          <span className="h-7 border-2 border-[#14FF00]"></span>
 
-        <a href="/" className="text-sm md:text-base">
-          Shop now
-        </a>
-      </div>
+          <a href="/" className="text-sm md:text-base">
+            Shop now
+          </a>
+        </div>
+      )}
+
+      {language === "es" && (
+        <div className="flex gap-2 md:gap-5 text-white items-center font-normal mb-2 md:mb-0">
+          <p className="text-sm md:text-base">
+            Obtenga 50% de descuento en los artículos seleccionados
+          </p>
+
+          <span className="h-7 border-2 border-[#14FF00]"></span>
+
+          <a href="/" className="text-sm md:text-base">
+            Compra ahora
+          </a>
+        </div>
+      )}
+
+      {language === "uz" && (
+        <div className="flex gap-2 md:gap-5 text-white items-center font-normal mb-2 md:mb-0">
+          <p className="text-sm md:text-base">
+            Tanlangan mahsulotlarga 50% chegirma oling
+          </p>
+
+          <span className="h-7 border-2 border-[#14FF00]"></span>
+
+          <a href="/" className="text-sm md:text-base">
+            Hozir sotib oling
+          </a>
+        </div>
+      )}
 
       <div className="text-white items-center flex gap-4 md:gap-14 font-medium">
         <div className="items-center flex flex-col">
@@ -79,7 +116,10 @@ const UpperHeader = () => {
               <ul className="absolute top-full left-0 bg-[#0D2613] py-2 px-4 rounded-md shadow-md">
                 <li
                   className="flex items-center gap-2 hover:text-[#14FF00] cursor-pointer"
-                  onClick={() => handleLanguageSelect("English")}
+                  onClick={() => {
+                    handleLanguageChange("en");
+                    handleLanguageSelect("English");
+                  }}
                 >
                   <img src={usa} className="w-5 h-3" alt="Icon of flag USA" />
                   <span>English</span>
@@ -87,7 +127,10 @@ const UpperHeader = () => {
 
                 <li
                   className="flex items-center gap-2 hover:text-[#14FF00] cursor-pointer"
-                  onClick={() => handleLanguageSelect("Spanish")}
+                  onClick={() => {
+                    handleLanguageChange("es");
+                    handleLanguageSelect("Spanish");
+                  }}
                 >
                   <img
                     src={spain}
@@ -99,7 +142,10 @@ const UpperHeader = () => {
 
                 <li
                   className="flex items-center gap-2 hover:text-[#14FF00] cursor-pointer"
-                  onClick={() => handleLanguageSelect("Uzbek")}
+                  onClick={() => {
+                    handleLanguageChange("uz");
+                    handleLanguageSelect("Uzbek");
+                  }}
                 >
                   <img src={uzb} className="w-5 h-6" alt="Icon of flag UZB" />
                   <span>Uzbek</span>
