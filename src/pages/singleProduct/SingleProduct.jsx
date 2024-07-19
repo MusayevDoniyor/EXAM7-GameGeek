@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import Spinner from "../../components/spinner/Spinner";
@@ -9,8 +9,10 @@ import { FaMinus, FaPlus, FaRegHeart } from "react-icons/fa6";
 import { BsCart2 } from "react-icons/bs";
 import { PiTruck } from "react-icons/pi";
 import { BiBox } from "react-icons/bi";
+import { LanguageContext } from "../../components/LanguageProvider";
 
 const SingleProduct = () => {
+  const { language } = useContext(LanguageContext);
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -96,7 +98,9 @@ const SingleProduct = () => {
               navigate(-1);
             }}
           >
-            Back
+            {language === "en" && "Back"}
+            {language === "es" && "Volver"}
+            {language === "uz" && "Ortga"}
           </button>
         </div>
       ) : product ? (
@@ -108,7 +112,9 @@ const SingleProduct = () => {
                 navigate(-1);
               }}
             >
-              Products
+              {language === "en" && "Products"}
+              {language === "es" && "Productos"}
+              {language === "uz" && "Mahsulotlar"}
             </span>{" "}
             / <span className="px-2">{product.brand_name}</span> /{" "}
             <b className="pl-2 cursor-pointer">{product.name}</b>
@@ -143,7 +149,9 @@ const SingleProduct = () => {
                 </h2>
 
                 <p className="font-readex-pro font-medium text-[#190D26] text-lg pt-3">
-                  {product.description}
+                  {language === "en" && product.description}
+                  {language === "es" && product.description_es}
+                  {language === "uz" && product.description_uz}
                 </p>
 
                 <div className="flex gap-2 mt-3 items-center">
@@ -162,14 +170,21 @@ const SingleProduct = () => {
                   </span>
 
                   <span className="font-medium text-lg text-[#0D2612]">
-                    Suggested payments with 6 month special financing
+                    {language === "en" &&
+                      "Suggested payments with 6 month special financing"}
+                    {language === "es" &&
+                      "Pagos sugeridos con financiación especial de 6 meses"}
+                    {language === "uz" &&
+                      "6 oylik maxsus moliyalashtirish bilan taklif qilinadigan to'lovlar"}
                   </span>
                 </p>
               </div>
 
               <div className="border-b-2 border-dashed border-[#6A6969] py-5">
                 <h4 className="font-readex-pro font-semibold text-2xl text-[#0E020C] pb-7 ">
-                  Choose a color
+                  {language === "en" && "Choose a color"}
+                  {language === "es" && "Elige un color"}
+                  {language === "uz" && "Rangni tanlang"}
                 </h4>
 
                 <div>
@@ -220,11 +235,27 @@ const SingleProduct = () => {
                   </span>
                 </div>
 
-                <div className="w-40">
-                  <p className="font-inter font-semibold text-lg text-[#454444]">
-                    Only <span className="text-[#0BA42D]">16 items</span> left!
-                    Don't miss it
-                  </p>
+                <div className="w-44">
+                  {language === "en" && (
+                    <p className="font-inter font-semibold text-lg text-[#454444]">
+                      Only <span className="text-[#0BA42D]">16 items</span>{" "}
+                      left! Don't miss it
+                    </p>
+                  )}
+
+                  {language === "es" && (
+                    <p className="font-inter font-semibold text-lg text-[#454444]">
+                      Sólo <span className="text-[#0BA42D]">16 elementos</span>{" "}
+                      ¡izquierda! No te lo pierdas
+                    </p>
+                  )}
+
+                  {language === "uz" && (
+                    <p className="font-inter font-semibold text-lg text-[#454444]">
+                      Faqat <span className="text-[#0BA42D]">16 ta buyum</span>{" "}
+                      qoldi! O'tkazib yubormang
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -234,7 +265,9 @@ const SingleProduct = () => {
                  px-10 py-3 rounded-lg text-xl flex justify-center items-center gap-4 font-inter"
                 >
                   <BsCart2 />
-                  Add to Cart
+                  {language === "en" && "Add to Cart"}
+                  {language === "es" && "Añadir al carrito"}
+                  {language === "uz" && "Savatchaga qo'shish"}
                 </button>
 
                 <div
@@ -261,11 +294,18 @@ const SingleProduct = () => {
 
                   <span className="flex flex-col text-[#0D2612]">
                     <span className="font-readex-pro font-semibold text-lg">
-                      Free Delivery
+                      {language === "en" && "Free Delivery"}
+                      {language === "es" && "Envío gratis"}
+                      {language === "uz" && "Bepul yetkazib berish"}
                     </span>
 
                     <span className="border-b-2 border-[#0D2612] font-inter font-medium text-base pt-1 cursor-pointer">
-                      Enter your Postal Code for Delivery Availability
+                      {language === "en" &&
+                        "Enter your Postal Code for Delivery Availability"}
+                      {language === "es" &&
+                        "Ingresa tu código postal para ver la disponibilidad de entrega"}
+                      {language === "uz" &&
+                        "Yetkazib berish mavjudligini tekshirish uchun pochtangizni kiriting"}
                     </span>
                   </span>
                 </div>
@@ -277,11 +317,16 @@ const SingleProduct = () => {
 
                   <span className="flex flex-col text-[#0D2612]">
                     <span className="font-readex-pro font-semibold text-lg">
-                      Return Delivery
+                      {language === "en" && "Return Delivery"}
+                      {language === "es" && "Devolución de envío"}
+                      {language === "uz" && "Qaytarish yetkazib berish"}
                     </span>
 
                     <span className="border-b-2 border-[#0D2612] font-inter font-medium text-base pt-1 cursor-pointer">
-                      Free delivery 30 Days return
+                      {language === "en" && "Free delivery 30 Days return"}
+                      {language === "es" &&
+                        "Envío gratis, devolución en 30 días"}
+                      {language === "uz" && "30 kun ichida bepul qaytarish"}
                     </span>
                   </span>
                 </div>
@@ -290,7 +335,11 @@ const SingleProduct = () => {
           </div>
         </section>
       ) : (
-        <p>Product not found</p>
+        <p>
+          {language === "en" && "Product not found"}
+          {language === "es" && "Producto no encontrado"}
+          {language === "uz" && "Mahsulot topilmadi"}
+        </p>
       )}
     </div>
   );
