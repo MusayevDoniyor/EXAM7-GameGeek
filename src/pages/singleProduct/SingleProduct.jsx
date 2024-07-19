@@ -83,7 +83,7 @@ const SingleProduct = () => {
   };
 
   return (
-    <div className="mt-20 px-16 py-7">
+    <div className="mt-20 px-4 py-7 sm:px-8 md:px-16">
       {loading ? (
         <div>
           <Spinner />
@@ -120,17 +120,17 @@ const SingleProduct = () => {
             <b className="pl-2 cursor-pointer">{product.name}</b>
           </div>
 
-          <div className="flex gap-7">
-            <div className="flex flex-col gap-y-28">
-              <div className="border-2 rounded-lg inline-block w-[675px] h-[675px] items-center">
+          <div className="flex flex-col gap-7 sm:flex-row">
+            <div className="flex flex-col gap-y-28 w-full sm:w-3/5">
+              <div className="border-2 rounded-lg inline-block w-full h-auto sm:w-[675px] sm:h-[675px] items-center">
                 <img
                   src={product.image_url}
                   alt={product.name}
-                  className="w-[650px] h-[650px]"
+                  className="w-full h-auto sm:w-[650px] sm:h-[650px]"
                 />
               </div>
 
-              <div className="flex gap-8">
+              <div className="flex gap-8 overflow-x-auto pb-4 sm:overflow-x-visible">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <img
                     key={index}
@@ -142,7 +142,7 @@ const SingleProduct = () => {
               </div>
             </div>
 
-            <div className="px-3 pt-2">
+            <div className="px-3 pt-2 w-full sm:w-2/5">
               <div className="border-b-2 border-dashed border-[#6A6969] pb-5">
                 <h2 className="font-hammersmith-one font-normal text-4xl">
                   {product.name}
@@ -212,7 +212,7 @@ const SingleProduct = () => {
                 </div>
               </div>
 
-              <div className="flex gap-10 py-5 mt-1">
+              <div className="flex flex-col gap-10 py-5 mt-1 sm:flex-row">
                 <div className="flex gap-5 py-3 px-9 bg-[#F5F5F5] border-[3px] border-[#0BA42D] rounded-3xl items-center">
                   <span
                     onClick={() => {
@@ -235,7 +235,7 @@ const SingleProduct = () => {
                   </span>
                 </div>
 
-                <div className="w-44">
+                <div className="w-full sm:w-44">
                   {language === "en" && (
                     <p className="font-inter font-semibold text-lg text-[#454444]">
                       Only <span className="text-[#0BA42D]">16 items</span>{" "}
@@ -259,10 +259,10 @@ const SingleProduct = () => {
                 </div>
               </div>
 
-              <div className="w-full flex justify-between items-center mt-12">
+              <div className="w-full flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center mt-12">
                 <button
-                  className="w-4/5 bg-[#0BA42D] hover:bg-[#0BB91D] text-white font-bold
-                 px-10 py-3 rounded-lg text-xl flex justify-center items-center gap-4 font-inter"
+                  className="w-full bg-[#0BA42D] hover:bg-[#0BB91D] text-white font-bold
+                 px-10 py-3 rounded-lg text-xl flex justify-center items-center gap-4 font-inter sm:w-4/5"
                 >
                   <BsCart2 />
                   {language === "en" && "Add to Cart"}
@@ -271,14 +271,14 @@ const SingleProduct = () => {
                 </button>
 
                 <div
-                  className={`border-2 rounded-lg border-[#0D2612] p-3 ${
+                  className={`border-2 rounded-lg border-[#0D2612] items-center text-center p-3 ${
                     liked
                       ? "bg-red-600 text-white border-none"
                       : "bg-transparent text-black"
                   } `}
                 >
                   <FaRegHeart
-                    className={`cursor-pointer size-6 `}
+                    className="cursor-pointer size-6 mx-auto"
                     onClick={() => {
                       setLiked(!liked);
                     }}
