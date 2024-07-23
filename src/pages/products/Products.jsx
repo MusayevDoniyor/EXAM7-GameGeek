@@ -25,6 +25,11 @@ const Products = ({ carts, setCarts, setProducts }) => {
   // ? Loading
   const [loading, setLoading] = useState(true);
 
+  // & Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const productsPerPage = 6;
+
   const baseUrl = `${import.meta.env.VITE_BASE_URL}`;
 
   useEffect(() => {
@@ -53,7 +58,7 @@ const Products = ({ carts, setCarts, setProducts }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       let query = `${baseUrl}/products`;
-      const params = [];
+      const params = [`_page=${currentPage}`, `_limit=${productsPerPage}`];
 
       if (selectedColor) {
         params.push(`color_options_like=${encodeURIComponent(selectedColor)}`);
@@ -77,6 +82,9 @@ const Products = ({ carts, setCarts, setProducts }) => {
         });
 
         dispatch(addProducts(sortedProducts));
+        setTotalPages(
+          Math.ceil(response.headers["x-total-count"] / productsPerPage)
+        );
         console.log(response.data);
       } catch (error) {
         console.error("Products fetch error:", error);
@@ -86,7 +94,7 @@ const Products = ({ carts, setCarts, setProducts }) => {
     };
 
     fetchProducts();
-  }, [selectedBrand, selectedColor, sortOrder, dispatch, baseUrl]);
+  }, [selectedBrand, selectedColor, sortOrder, currentPage, dispatch, baseUrl]);
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -94,6 +102,13 @@ const Products = ({ carts, setCarts, setProducts }) => {
 
   const toggleAccordion = (currentState, setFunction) => {
     setFunction(!currentState);
+  };
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+      setLoading(true);
+    }
   };
 
   return (
@@ -132,6 +147,21 @@ const Products = ({ carts, setCarts, setProducts }) => {
               ))}
             </div>
           )}
+
+          <div className="flex gap-7 mx-auto text-[#0BA42D] font-inter text-sm mt-32 mb-10 justify-center">
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => handlePageChange(index + 1)}
+                disabled={currentPage === index + 1}
+                className={`border border-[#0BA42D] rounded-full px-3 py-1 active:bg-[#0BA42D] active:text-[#fff] ${
+                  currentPage === index + 1 ? "bg-[#0BA42D] text-[#fff]" : ""
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </main>
       </div>
     </>

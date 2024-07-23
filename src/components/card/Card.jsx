@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 import { useContext } from "react";
 import { LanguageContext } from "../LanguageProvider";
+import Swal from "sweetalert2";
 
 const Card = ({ product, setCarts, setProducts, carts, products }) => {
   const { language } = useContext(LanguageContext);
@@ -48,6 +49,13 @@ const Card = ({ product, setCarts, setProducts, carts, products }) => {
             onClick={() => {
               setCarts([...carts, product.id]);
               setProducts([...products, product]);
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your product has been added to the cart",
+                showConfirmButton: false,
+                timer: 1000,
+              });
             }}
             className="bg-[#0BA42D] hover:bg-[#0BB91D] text-white font-medium px-6 py-2 md:px-8 md:py-3 rounded-md text-base md:text-lg flex gap-3 items-center"
           >
